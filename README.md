@@ -7,6 +7,8 @@ A Flask + SQLite web app that lets university students post long distance trips 
 -  View all currently posted trips
 -  Book a seat on a trip (seats update in real time)
 
+## Live Demo
+
 ## Tech Stack
 -  Python, Flask
 -  SQLite
@@ -18,4 +20,8 @@ A Flask + SQLite web app that lets university students post long distance trips 
 4. 'python3 app.py'
 5. Visit 'http://127.0.0.1:5000'
 
+## Contact
+If you have any questions or want to connect, feel free to reach out to me!
+- Linkedin: www.linkedin.com/in/vidushi-arora-99327931b
+- Email: vidushi.arora24@gmail.com
 
