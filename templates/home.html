@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uni Carpool</title>
+</head>
+<body>
+    <h1>Uni Carpool</h1>
+
+    <h2>Post a Trip</h2>
+    <form action="/post_trip" method="POST">
+        <label>Your name:</label><br>
+        <input type="text" name="driver" required><br><br>
+
+        <label>From:</label><br>
+        <input type="text" name="from_location" required><br><br>
+
+        <label>To:</label><br>
+        <input type="text" name="to_location" required><br><br>
+
+        <label>Date:</label><br>
+        <input type="date" name="date" required><br><br>
+
+        <label>Seats available:</label><br>
+        <input type="number" name="seats_available" min="1" required><br><br>
+
+        <label>Price per seat (£):</label><br>
+        <input type="number" name="price_per_seat" min="0" step="0.01" required><br><br>
+
+        <button type="submit">Post Trip</button>
+    </form>
+
+    <hr>
+
+    <h2>Available Trips</h2>
+    {% if trips %}
+        {% for trip in trips %}
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                <strong>{{ trip.driver }}</strong>: {{ trip.from_location }} &rarr; {{ trip.to_location }}<br>
+                Date: {{ trip.date }}<br>
+                Seats left: {{ trip.seats_available }}<br>
+                Price per seat: £{{ trip.price_per_seat }}<br>
+
+                {% if trip.seats_available > 0 %}
+                    <form action="/book_trip/{{ trip.id }}" method="POST">
+                        <button type="submit">Book a seat</button>
+                    </form>
+                {% else %}
+                    <em>Fully booked</em>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No trips posted yet.</p>
+    {% endif %}
+</body>
+</html>
